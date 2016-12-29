@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Paint Online</title>
+    <link href="style.css" rel="stylesheet" />
+    <script>
+        document.write('<script defer="defer" src="'+location.href+'socket.io/socket.io.js"><'+'/script>');
+    </script>
+    <script defer="defer" src="js.js"></script>
+    <script defer="defer" src="io.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://dinbror.dk/bpopup/assets/jquery.bpopup-0.9.4.min.js"></script>
+	<script src="http://dinbror.dk/bpopup/assets/jquery.easing.1.3.js"></script>
+	<!-- 讓畫筆等等浮出來 -->
+	<script type='text/javascript'>
+		$(function(){
+			var w = $("#mwt_slider_content").width();
+			$('#mwt_slider_content').css('height', ($(window).height() - 20) + 'px' ); //將區塊自動撐滿畫面高度
+			
+			$("#mwt_fb_tab").mouseover(function(){ //滑鼠滑入時
+				if ($("#mwt_mwt_slider_scroll").css('left') == '-'+w+'px')
+				{
+					$("#mwt_mwt_slider_scroll").animate({ left:'0px' }, 600 ,'swing');
+				}
+			});
+			
+			
+			$("#mwt_slider_content").mouseleave(function(){　//滑鼠離開後
+				$("#mwt_mwt_slider_scroll").animate( { left:'-'+w+'px' }, 600 ,'swing');	
+			});	
+		});
+	</script>
+</head>
+
+<body>
+    <main class="container">
+        <h1>大家來畫畫 <3 </h1>
+        <div class="row">
+            <div style="float: left;width: 100%;">
+                <div style="margin-left:10px;margin-right: 400px;">
+                    <div class="box-sh">
+						
+						<div id="mwt_mwt_slider_scroll">
+							<div id="mwt_fb_tab">功能選擇</div>
+							<div id="mwt_slider_content">
+								<div id="colors">
+									<span>顏色</span>
+								</div>
+								<div>
+									<span>筆寬</span>
+									<input id="ranger" type="range" style="width: 50px;" value="1" min="1" step="1" max="10"/>
+									<span>1</span>
+									<div id="btns">
+										<a class="btn btn-blue btn-active-able" href="javascript:delete canvas.erase;">畫筆</a>
+										<a class="btn btn-blue btn-active-able" href="javascript:canvas.erase=true;">橡皮擦</a>
+										<a class="btn btn-blue" onclick="socket.emit('clear paths');" href="javascript:;">清空</a>
+									</div>
+									<div style="clear: both;"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div id="info" style="padding: 10px;">
+							<div style="display:inline-block; margin-left:40px">
+								<p style="white-space: nowrap;"><img src="artist.gif"><label>畫圖玩家：</label><strong id="player"></strong></p>
+							</div>
+							<div style="display:inline-block; margin-left:40px">
+								<p style="white-space: nowrap;"><img src="time.png"><label>剩餘時間：</label><strong id="time"></strong></p>
+							</div>
+							<div style="display:inline-block; margin-left:40px">
+								<p style="white-space: nowrap;"><img src="FAQ.png"><label>題目：</label><strong id="word"></strong></p>
+							</div>
+						</div>
+						
+						<canvas height="400">
+							Sorry, Your Browser don't support canvas of Html5.
+						</canvas>
+					
+                    </div>
+                    <main style="margin-top: 20px;">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="box-sh">
+                                <h4>上場玩家</h4>
+                                <div id="div-users" style="min-height:50px;max-height: 120px;overflow-y: scroll;">
+
+                                </div>
+                                <p class="fr" style="margin: 5px;">
+                                    <button class="btn btn-blue" id="btn-in">手動加入遊戲</button>
+                                    <button class="btn btn-blue" id="btn-autoin">自動加入遊戲</button>
+                                </p>
+                                <p style="clear: both"></p>
+                                </div>
+                            </div>
+							<!--
+                            <div class="col-4">
+                                <div class="box-sh">
+                                <h4>訊息欄</h4>
+                                <div id="info" style="padding: 10px;overflow: scroll">
+                                    <p style="white-space: nowrap;"><label>畫圖玩家：</label><strong id="player"></strong></p>
+                                    <p style="white-space: nowrap;"><label>剩餘時間：</label><strong id="time"></strong></p>
+                                    <p style="white-space: nowrap;"><label>題目：</label><strong id="word"></strong></p>
+                                </div>
+                                </div>
+                            </div>
+							-->
+                            <div class="col-4">
+                                <div class="box-sh">
+                                <h4>排行榜</h4>
+                                <div class="table-responsive">
+                                    <table id="tops">
+                                        <tr role="template">
+                                            <td><label></label></td>
+                                            <td><strong></strong></td>
+                                            <td><em></em></td>
+                                        </tr>     
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+							
+                        </div>
+                    </main>
+                </div>
+
+            </div>
+            <div class="box-sh" style="margin-left: -380px;float: left;width:370px;">
+                <h3 >聊天室</h3>
+                <div id="msg">
+                </div>
+                <input type="text" id="input-msg" placeholder="輸入訊息，按Enter送出"/>
+            </div>
+			<div id="element_to_pop_up">
+				<a class="b-close">x</a>
+			</div>
+        </div>
+    </main>
+
+
+</body>
+</html>

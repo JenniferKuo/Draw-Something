@@ -1,0 +1,262 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft JhengHei";
+    box-sizing: border-box;
+}
+body{
+    touch-action: none;
+
+}
+canvas{
+    cursor: url(pen.png), auto;
+}
+h1,h2,h3{
+    text-align: center;
+    margin: 10px 4px 20px;
+}
+h4,h5,h6{
+    text-align: center;
+    padding: 8px 0 8px;
+    border-bottom: 1px solid #eee;
+}
+.container{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.margin-none{
+    margin: 0;
+}
+.col-6{
+    width: 60%;
+}
+.col-7{
+    width: 70%;
+}
+.col-3{
+    width: 30%;
+}
+.col-1{
+    width: 10%;
+}
+.col-2{
+    width: 20%;
+}
+.col-3{
+    width: 30%;
+}
+.col-4{
+    width: 40%;
+}
+.col-9{
+    width: 90%;
+}
+.col-8{
+    width: 80%;
+}
+.row{
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.row:before,
+.row:after {
+    content: " ";
+    display: table;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9{
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+}
+.row:after {
+    clear: both;
+}
+.mid{
+    vertical-align: middle;
+}
+.active{
+    border: 3px solid fuchsia !important;
+}
+.btn{
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin: 4px;
+    border-radius: 3px;
+}
+.btn:hover{
+    box-shadow: 0px 0px 3px 3px #bbb;
+}
+.btn-blue{
+    background-color: cornflowerblue;
+    color: azure;
+}
+
+.on{
+    border: solid 2px hotpink;
+    opacity: .6;
+}
+a{
+    text-decoration: none;
+    font-size: 14px;
+}
+.rect{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid black;
+    text-align: center;
+    margin:0 20px 0;
+    cursor: pointer;
+}
+
+.box-sh{
+    box-shadow: 0px 0px 8px 3px #bbb;
+}
+
+.text-center{
+    text-align: center;
+}
+
+#msg{
+    overflow-y: scroll;
+    padding: 0 10px 0;
+    /*width: 100%;*/
+    height: 400px;
+}
+#msg p{
+    white-space:nowrap;
+}
+#info p{
+    line-height: 30px;
+}
+#div-users p{
+    margin-left: 2em;
+}
+input[type=range]{cursor: pointer;}
+input[type=text]{
+    height: 20px;
+    font-size: 16px;
+    margin: 5px;
+    width: 90%;
+}
+button[disabled]{
+    opacity: .6;
+    cursor: not-allowed;
+}
+table{
+    margin-top: 10px;
+    width: 100%;
+    border-collapse:collapse;
+}
+
+table tr:nth-child(2n){
+    background-color: gainsboro;
+}
+.table-responsive{
+    overflow-x: auto;
+    overflow-y: scroll;
+    max-height: 150px;
+}
+td{
+    padding: 4px 8px 4px;
+    white-space: nowrap;
+}
+*[role=template]{
+    display: none;
+}
+	
+#mwt_mwt_slider_scroll{
+	top: 20;
+	left:-60px;
+	width:60px;	
+	position:fixed;
+	z-index:5;
+}
+#mwt_slider_content{
+	background:#3c5a98;
+	text-align:center;
+	padding-top:20px;
+}
+#mwt_fb_tab {
+	position:absolute;
+	top:0px;
+	right:-24px;
+	width:24px;
+	background:#3c5a98;
+	color:#ffffff;
+	font-family:Arial, Helvetica, sans-serif;	
+	text-align:center;
+	padding:9px 0;
+
+	-moz-border-radius-topright:10px;
+	-moz-border-radius-bottomright:10px;
+	-webkit-border-top-right-radius:10px;
+	-webkit-border-bottom-right-radius:10px;	
+}
+#mwt_fb_tab span {
+	display:block;
+	height:12px;
+	padding:1px 0;
+	line-height:12px;
+	text-transform:uppercase;
+	font-size:12px;
+}
+#element_to_pop_up { 
+    background-color:#fff;
+    border-radius:15px;
+    color:#000;
+    display:none; 
+    padding:20px;
+    min-width:400px;
+    min-height: 180px;
+    text-align: center;
+    line-height: 80px;
+}
+.b-close{
+    cursor:pointer;
+    position:absolute;
+    right:10px;
+    top:5px;
+}
+span {
+    margin-right: 20px;
+}
+.talk-bubble {
+    margin: 10px;
+    display: inline-block;
+    position: relative;
+    min-width: 100px;
+    height: auto;
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    /*border: 2px solid;*/
+    padding: 10px;
+}
+.tri-right.border.left-in:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -40px;
+    right: auto;
+    top: 30px;
+    bottom: auto;
+    border: 20px solid;
+    border-color: #666 #666 transparent transparent;
+}
+.tri-right.left-in:after{
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -20px;
+    right: auto;
+    top: 10px;
+    bottom: auto;
+    border: 12px solid;
+    border-color: #d3d3d3 #d3d3d3 transparent transparent;*/
+}
